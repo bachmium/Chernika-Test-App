@@ -1,0 +1,34 @@
+<ion-view view-title="Совпадения" cache-view="false">
+    <clever-loader is-seen="true" with-no-connection-banner="true"></clever-loader>
+
+    <div class="main-content" ng-if="isContentSeen">
+        <ion-content>
+            <ion-list>
+                <ion-item class="item-remove-animate item-avatar chats-list-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" ui-sref="main.match-detail({chatId: chat.chat, name: chat.user.firstName})">
+                    <img class="chats-list-avatar-image" ng-src="{{chat.user.photos[0].src}}">
+                    <div class="bg-icon" ng-show="!chat.user.photos[0]" bg-icon bg-width="40">
+                        <div class="icon ion-person"></div>
+                    </div>
+                    <h2>
+                        {{chat.user.firstName}}
+                    </h2>
+                    <p ng-class="{'bold': isChatHighlighted(chat)}">{{chat.message ? chat.message.text : 'Вы понравились друг другу!'}}</p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+
+                    <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                        Delete
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+
+        <ion-content class="padding" ng-show="!chats.length" scroll="false">
+            <div class="centered-block">
+                <div class="default-content">
+                    <div class="ion-person-stalker centered-block-icon"></div>
+                    <div class="hint-text">У вас пока нет совпадений :(</div>
+                </div>
+            </div>
+        </ion-content>
+    </div>
+</ion-view>

@@ -1,0 +1,21 @@
+<ion-view view-title="Настройки">
+    <ion-content scroll="false">
+        <ion-list>
+            <ion-item class="item-icon-left" ui-sref="main.settings-photo">
+                <i class="icon ion-ios-camera"></i>
+                Настройки фотографий
+            </ion-item>
+            <ion-item class="item-icon-left" ui-sref="main.settings-search">
+                <i class="icon ion-radio-waves"></i>
+                Настройки поиска
+            </ion-item>
+            <ion-item class="item-icon-left" ng-click="share()">
+                <i class="icon ion-ios-people"></i>
+                Пригласить друзей
+            </ion-item>
+        </ion-list>
+        <button class="button logout-btn" ng-click="logout()">
+            Выйти
+        </button>
+    </ion-content>
+</ion-view>

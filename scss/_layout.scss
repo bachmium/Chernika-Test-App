@@ -1,0 +1,118 @@
+body {
+  font-family: $font-family-sans-serif;
+  color: $default-font-color;
+}
+
+body.blurred {
+  > ion-nav-bar > *, ion-nav-view {
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+  }
+}
+
+.rounded-image {
+  border-radius: 9999px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  display: inline-block;
+}
+
+.table {
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+$centeredBlockWidth: 300px;
+$centeredBlockHeight: 300px;
+.centered-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $centeredBlockWidth;
+  height: $centeredBlockHeight;
+  margin-left: -$centeredBlockWidth/2;
+  margin-top: -$centeredBlockHeight/2;
+  text-align: center;
+  display: table;
+  z-index: 1;
+  .default-content {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .icon-text {
+    font-size: 22px;
+  }
+  .hint-text {
+    font-size: 16px;
+  }
+}
+
+.modal {
+  &.full-screen-modal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}
+
+.header-btns {
+  position: absolute;
+  right: 0;
+}
+
+.center-absolute {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.touch-area-sm {
+  position:relative;
+  &:after {
+    content:'';
+    position:absolute;
+    top:-15px; bottom:-15px;
+    left:-15px; right:-15px;
+  }
+}
+
+.full-white {
+  position: relative;
+  height: 100%;
+  background-color: white;
+  display: block;
+  z-index: 1000;
+}
+
+.bg-icon {
+  position: absolute;
+  text-align: center;
+  color: $positive;
+}
+
+.none {
+ display: none !important;
+}
+
+.popover.none {
+  display: block !important;
+}
+

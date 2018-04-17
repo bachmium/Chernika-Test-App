@@ -1,0 +1,37 @@
+<ion-view view-title="Настройки поиска" ng-show="showOnState('main.settings-search')">
+    <clever-loader is-seen="true" with-no-connection-banner="true"></clever-loader>
+
+    <div class="main-content" ng-if="isContentSeen">
+        <ion-content>
+            <ion-list>
+                <ion-item>
+                    <span class="top-label">Расстояние</span>
+                    <span class="distance-label">{{settings.distance}} км.</span>
+                    <div class="range range-positive">
+                        <input type="range" name="volume" min="1" max="150" ng-model="settings.distance">
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <span class="top-label">Возраст</span>
+                    <span class="distance-label">{{settings.minAge}}-{{settings.maxAge | agePlus}}</span>
+                    <div class="range range-positive">
+                        <span class="input-label">Минимальный&nbsp;</span>
+                        <input type="range" name="volume" min="18" max="55" ng-model="settings.minAge">
+                    </div>
+                    <div class="range range-positive">
+                        <span class="input-label">Максимальный</span>
+                        <input type="range" name="volume" min="18" max="55" ng-model="settings.maxAge">
+                    </div>
+                </ion-item>
+                <div class="list">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Показывать
+                    </div>
+                    <select ng-model="settings.show" ng-options="opt.id as opt.label for opt in sexOptions"></select>
+                </label>
+                </div>
+            </ion-list>
+        </ion-content>
+    </div>
+</ion-view>

@@ -1,0 +1,26 @@
+@mixin scale($factor) {
+  -webkit-transform: scale($factor);
+  transform: scale($factor);
+}
+
+@mixin translate3d($x: 0, $y: 0, $z: 0) {
+  -webkit-transform: translate3d($x,$y,$z);
+  transform: translate3d($x,$y,$z);
+}
+
+@mixin scale-without-offset($scaleFactor) {
+  -webkit-transform: scale($scaleFactor);
+  transform: scale($scaleFactor);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+// Add percentage of white to a color
+@function tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}

@@ -1,0 +1,6 @@
+<div class="bg-icon" bg-icon bg-width="width - 0.2">
+    <div class="icon ion-person"></div>
+</div>
+<div ng-drop="true" ng-drop-success="onDropComplete($data)" ng-if="photo">
+    <div on-touch="onTouch()" on-release="onRelease()" ng-drag-data="photo" ng-drag="true" cropped-image="photo" target-width="width"></div>
+</div>

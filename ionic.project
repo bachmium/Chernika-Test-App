@@ -1,0 +1,17 @@
+{
+  "name": "chernika",
+  "app_id": "52e42ca3",
+  "proxies": [
+    {
+      "path": "/pinder",
+      "proxyUrl": "http://akveo.com/pinder/"
+    }
+  ],
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+<ion-view view-title="Люди" class="swiper-tab">
+  <ion-content class="padding cards-container" scroll="false">
+    <div class="default-swiper-content centered-block swiper-info list">
+        <div class="default-content" ng-if="geoEnabled">
+            <div class="rounded-image" cropped-image="userProfile.photos[0]" target-width="100"></div>
+            <div class="icon-text" ng-class="{ invisible: cards.length, shrinked: !loading }"><i class="icon ion-loading-c"></i></div>
+            <div ng-if="loading">
+                <div class="hint-text" ng-class="{ invisible: cards.length }">Ищем новых людей недалеко от Вас</div>
+            </div>
+            <div ng-if="!loading && !cards.length">
+                <div class="hint-text" ng-class="{ invisible: cards.length }">
+                    <div>Рядом с вами нет новых людей</div>
+                    <div><button ng-click="share()" class="button swiper-btn button-positive">Пригласить друзей</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="default-content" ng-if="!geoEnabled">
+            <div class="ion-ios-navigate-outline centered-block-icon"></div>
+            <div class="hint-text">
+                Ошибка геолокации.
+                <span ng-show="platformId != 'android'">Для поиска новых пар включите геолокацию в настройках вашего устройства</span>
+                <span ng-show="platformId == 'android'">Для поиска новых пар рекомендуется включить режим повышенной точности в настройках местоположения вашего устройства</span>
+            </div>
+            <button ng-show="platformId == 'android'" ng-click="switchToLocationSettings()" class="button swiper-btn icon-left ion-settings button-positive">Перейти</button>
+        </div>
+
+    </div>
+    <div class="swiper-view" container-width="viewSizing.swiperViewWidth" container-height="viewSizing.swiperViewHeight">
+      <td-cards max-stack-size="3">
+        <td-card ng-repeat="card in cards track by card.obj._id"
+                 on-destroy="cardDestroyed($index)"
+                 on-td-swipe-left="cardSwipedLeft($index)"
+                 on-td-swipe-right="cardSwipedRight($index)"
+                 drag-disabled="$index"
+                 class="list card with-footer card-{{$index}}"
+                 ng-style="cardStyles">
+          <div class="item image card-content">
+            <div class="bg-icon" ng-show="!card.obj.photos[0]" bg-icon bg-width="imageActualWidth">
+                <div class="icon ion-person"></div>
+            </div>
+            <div class="no-text">Нет</div>
+                <a class="photo-container" ng-if="card.obj.photos[0]" cropped-image="card.obj.photos[0]" target-width="imageActualWidth" href="#/main/swiper/{{card.obj._id}}"></a>
+            <div class="yes-text">Да</div>
+          </div>
+          <div class="item item-divider item-footer">
+            {{card.obj.firstName}}, {{card.obj.age}}
+          </div>
+        </td-card>
+      </td-cards>
+    </div>
+  </ion-content>
+  <ion-footer-bar keyboard-attach class="bar-light">
+    <div class="controls-container">
+      <button class="button icon ion-close-round dislike-button" ng-click="dislikeFirst()" ng-disabled="!cards.length"></button>
+      <button class="button icon ion-heart like-button" ng-click="likeFirst()" ng-disabled="!cards.length"></button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,21 @@
+<ion-view>
+    <ion-nav-title>{{profileDetails.firstName}}</ion-nav-title>
+    <clever-loader is-seen="true" with-no-connection-banner="true"></clever-loader>
+
+    <div class="main-content" ng-if="isContentSeen">
+        <ion-content scroll="false" class="profile-details">
+            <ion-slide-box show-pager="true">
+                <ion-slide class="" ng-repeat="photo in profileDetails.photos">
+                    <div cropped-image="photo" target-width="screenWidth"></div>
+                </ion-slide>
+            </ion-slide-box>
+            <div class="padding">
+                <div class="profile-details-text">
+                    <span class="dark profile-details-name">{{profileDetails.firstName}}, {{profileDetails.age}}</span>
+                    <span class="profile-details-distance">{{distance === 0 ? 0.1 : distance}}&nbsp;км от Вас</span>
+                    <span class="icon ion-android-more-vertical more-details assertive touch-area-sm" ng-click="openPopover($event)"></span>
+                </div>
+            </div>
+        </ion-content>
+    </div>
+</ion-view>
